@@ -148,7 +148,7 @@ When using Ukrainian keyboard layout in macOS:
 | O + P | `[` | Ukrainian х |
 | L + ' | `;` | Ukrainian ж |
 | U + I | `+` | |
-| J + K | `-` | |
+| M + , | `-` | |
 
 ---
 

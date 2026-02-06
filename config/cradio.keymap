@@ -13,7 +13,7 @@
  *   - Combo O+P → [ (х)
  *   - Combo L+' → ; (ж)
  *   - Combo U+I → +
- *   - Combo J+K → -
+ *   - Combo M+, → -
  */
 
 #include <behaviors.dtsi>
@@ -67,14 +67,14 @@
         combo_plus {
             timeout-ms = <50>;
             key-positions = <6 7>;
-            bindings = <&kp PLUS>;
+            bindings = <&kp KP_PLUS>;
             layers = <BASE>;
         };
-        // J+K → -
+        // M+, → -
         combo_minus {
             timeout-ms = <50>;
-            key-positions = <16 17>;
-            bindings = <&kp MINUS>;
+            key-positions = <26 27>;
+            bindings = <&kp KP_MINUS>;
             layers = <BASE>;
         };
     };
