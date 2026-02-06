@@ -12,6 +12,8 @@
  *   - Hold . → ] (ї)
  *   - Combo O+P → [ (х)
  *   - Combo L+' → ; (ж)
+ *   - Combo U+I → +
+ *   - Combo J+K → -
  */
 
 #include <behaviors.dtsi>
@@ -59,6 +61,20 @@
             timeout-ms = <50>;
             key-positions = <18 19>;
             bindings = <&kp SEMI>;
+            layers = <BASE>;
+        };
+        // U+I → +
+        combo_plus {
+            timeout-ms = <50>;
+            key-positions = <6 7>;
+            bindings = <&kp PLUS>;
+            layers = <BASE>;
+        };
+        // J+K → -
+        combo_minus {
+            timeout-ms = <50>;
+            key-positions = <16 17>;
+            bindings = <&kp MINUS>;
             layers = <BASE>;
         };
     };
