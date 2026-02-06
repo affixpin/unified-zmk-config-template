@@ -153,15 +153,15 @@
 
         // Raise layer (NUMBERS + NAV + MEDIA) - calculator numpad on left
         // ╭─────────────────────────────────────────────╮ ╭─────────────────────────────────────────────╮
-        // │  *  │  1  │  2  │  3  │  -  │               │ SS4 │ SS5 │MUTE │VOL- │VOL+ │
-        // │  /  │  4  │  5  │  6  │  +  │               │LEFT │DOWN │ UP  │RIGHT│     │
+        // │  *  │  1  │  2  │  3  │  +  │               │ SS4 │ SS5 │MUTE │VOL- │VOL+ │
+        // │  /  │  4  │  5  │  6  │  -  │               │LEFT │DOWN │ UP  │RIGHT│     │
         // │  .  │  7  │  8  │  9  │  0  │               │HOME │PGDN │PGUP │ END │     │
         // ╰───────────────────╮     │     │         │     │     ╭───────────────────╯
         //                     ╰───────────╯         ╰───────────╯
         raise_layer {
             bindings = <
-                &kp ASTRK  &kp N1     &kp N2     &kp N3     &kp MINUS       &mac_ss4      &mac_ss5      &kp C_MUTE    &kp C_VOL_DN  &kp C_VOL_UP
-                &kp FSLH   &kp N4     &kp N5     &kp N6     &kp PLUS        &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     &trans
+                &kp ASTRK  &kp N1     &kp N2     &kp N3     &kp PLUS        &mac_ss4      &mac_ss5      &kp C_MUTE    &kp C_VOL_DN  &kp C_VOL_UP
+                &kp FSLH   &kp N4     &kp N5     &kp N6     &kp MINUS       &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     &trans
                 &kp DOT    &kp N7     &kp N8     &kp N9     &kp N0          &kp HOME      &kp PG_DN     &kp PG_UP     &kp END       &trans
                                       &trans     &kp ESC                    &trans        &trans
             >;
