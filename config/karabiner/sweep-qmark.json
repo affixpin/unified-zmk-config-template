@@ -1,0 +1,45 @@
+{
+  "title": "Sweep keyboard: NON_US_BACKSLASH → ?",
+  "rules": [
+    {
+      "description": "Map NON_US_BACKSLASH to ? on all layouts (EN: Shift+/, RU/UK: Shift+7)",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "non_us_backslash",
+            "modifiers": { "optional": ["any"] }
+          },
+          "to": [
+            { "key_code": "slash", "modifiers": ["left_shift"] }
+          ],
+          "conditions": [
+            {
+              "type": "input_source_if",
+              "input_sources": [{ "language": "en" }]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "non_us_backslash",
+            "modifiers": { "optional": ["any"] }
+          },
+          "to": [
+            { "key_code": "7", "modifiers": ["left_shift"] }
+          ],
+          "conditions": [
+            {
+              "type": "input_source_if",
+              "input_sources": [
+                { "language": "ru" },
+                { "language": "uk" }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
