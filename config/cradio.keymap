@@ -14,6 +14,8 @@
  *   - Combo L+' → ; (ж)
  *   - Combo U+I → +
  *   - Combo M+, → -
+ *   - Combo E+R → !
+ *   - Combo C+V → ?
  */
 
 #include <behaviors.dtsi>
@@ -75,6 +77,20 @@
             timeout-ms = <50>;
             key-positions = <26 27>;
             bindings = <&kp KP_MINUS>;
+            layers = <BASE>;
+        };
+        // E+R → !
+        combo_excl {
+            timeout-ms = <50>;
+            key-positions = <2 3>;
+            bindings = <&kp EXCL>;
+            layers = <BASE>;
+        };
+        // C+V → ? (sends NON_US_BACKSLASH, remapped to ? via Karabiner per layout)
+        combo_qmark {
+            timeout-ms = <50>;
+            key-positions = <22 23>;
+            bindings = <&kp NON_US_BACKSLASH>;
             layers = <BASE>;
         };
     };
