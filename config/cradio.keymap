@@ -16,6 +16,9 @@
  *   - Combo M+, → -
  *   - Combo E+R → !
  *   - Combo C+V → ?
+ *
+ * Note: With QMARK as the binding (Shift+/), this produces ? on US/Ukrainian
+ * layouts. On Russian layout, Shift+/ produces , — switch layout for ? there.
  */
 
 #include <behaviors.dtsi>
@@ -86,11 +89,11 @@
             bindings = <&kp EXCL>;
             layers = <BASE>;
         };
-        // C+V → ? (sends NON_US_BACKSLASH, remapped to ? via Karabiner per layout)
+        // C+V → ?
         combo_qmark {
             timeout-ms = <50>;
             key-positions = <22 23>;
-            bindings = <&kp NON_US_BACKSLASH>;
+            bindings = <&kp QMARK>;
             layers = <BASE>;
         };
     };
