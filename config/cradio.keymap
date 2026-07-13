@@ -7,6 +7,7 @@
  * - Left thumb: TAB/Lower (symbols with paired brackets)
  * - Right thumb: Backspace/Raise (calculator numpad + nav + media)
  * - Tri-layer (both thumbs): System controls + Bluetooth
+ * - Mouse layer: hold Raise + tap "/" to toggle keyboard mouse (move/click/scroll)
  * - Ukrainian letter support:
  *   - Hold P (з) → [ (х)
  *   - Hold . → ] (ї)
@@ -21,6 +22,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/pointing.h>
 
 // Layer definitions
 #define BASE 0
@@ -28,6 +30,7 @@
 #define RAISE 2    // Numbers/navigation layer (right thumb)
 #define TRI 3      // Tri-layer (both thumbs) - system controls
 #define FKEYS 4    // F-keys layer (hold Z)
+#define MOUSE 5    // Mouse layer (toggle: RAISE + bottom-right "/")
 
 // Home row mod macros (matching default Cradio)
 #define HRML(k1,k2,k3,k4) &ht LSHFT k1  &ht LALT k2  &ht LCTRL k3  &ht LGUI k4
@@ -187,14 +190,14 @@
         // ╭─────────────────────────────────────────────╮ ╭─────────────────────────────────────────────╮
         // │  *  │  1  │  2  │  3  │  +  │               │ SS4 │ SS5 │MUTE │VOL- │VOL+ │
         // │  /  │  4  │  5  │  6  │  -  │               │LEFT │DOWN │ UP  │RIGHT│     │
-        // │  .  │  7  │  8  │  9  │  0  │               │HOME │PGDN │PGUP │ END │     │
+        // │  .  │  7  │  8  │  9  │  0  │               │HOME │PGDN │PGUP │ END │MOUS │
         // ╰───────────────────╮     │     │         │     │     ╭───────────────────╯
         //                     ╰───────────╯         ╰───────────╯
         raise_layer {
             bindings = <
                 &kp ASTRK  &kp N1     &kp N2     &kp N3     &kp PLUS        &mac_ss4      &mac_ss5      &kp C_MUTE    &kp C_VOL_DN  &kp C_VOL_UP
                 &kp FSLH   &kp N4     &kp N5     &kp N6     &kp MINUS       &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     &trans
-                &kp DOT    &kp N7     &kp N8     &kp N9     &kp N0          &kp HOME      &kp PG_DN     &kp PG_UP     &kp END       &trans
+                &kp DOT    &kp N7     &kp N8     &kp N9     &kp N0          &kp HOME      &kp PG_DN     &kp PG_UP     &kp END       &tog MOUSE
                                       &trans     &kp ESC                    &trans        &trans
             >;
         };
@@ -230,6 +233,23 @@
                 &kp C_BRI_DN      &kp C_BRI_UP      &kp C_PREV  &kp C_PP  &kp C_NEXT   &trans   &trans  &trans  &kp F11  &kp F12
                 &trans            &trans            &trans      &trans    &trans       &trans   &trans  &trans  &trans   &trans
                                                     &trans      &trans                 &trans   &trans
+            >;
+        };
+
+        // Mouse layer (POINTER) - toggle ON: hold RAISE + tap bottom-right "/";  toggle OFF: tap "/" (or right-outer thumb)
+        // Move = right-hand HJKL (Vim positions), Scroll = row above, Click = thumbs (inner = Left, left-outer = Right)
+        // ╭─────────────────────────────────────────────╮ ╭─────────────────────────────────────────────╮
+        // │     │     │     │     │     │               │SCR← │SCR↓ │SCR↑ │SCR→ │     │
+        // │     │     │     │     │     │               │MOV← │MOV↓ │MOV↑ │MOV→ │     │
+        // │     │     │     │     │     │               │     │     │     │     │ OFF │
+        // ╰───────────────────╮RCLK │LCLK │       │LCLK │ OFF ╭───────────────────╯
+        //                     ╰───────────╯         ╰───────────╯
+        mouse_layer {
+            bindings = <
+                &none  &none  &none  &none  &none    &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT  &none
+                &none  &none  &none  &none  &none    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &none
+                &none  &none  &none  &none  &none    &none           &none           &none         &none            &tog MOUSE
+                                     &mkp RCLK  &mkp LCLK             &mkp LCLK  &tog MOUSE
             >;
         };
     };
