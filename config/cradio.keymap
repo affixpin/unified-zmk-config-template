@@ -22,7 +22,18 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+
+// Pointer tuning: top speed in px/s (default 600) and scroll speed (default 10)
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1500
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 20
+
 #include <dt-bindings/zmk/pointing.h>
+
+// Reach top speed faster for a snappier feel (defaults: 300ms, exponent 1)
+&mmv {
+    time-to-max-speed-ms = <200>;
+    acceleration-exponent = <1>;
+};
 
 // Layer definitions
 #define BASE 0
